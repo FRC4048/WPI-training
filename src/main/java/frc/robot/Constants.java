@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.RobotBase;
 
 /**
@@ -43,10 +44,20 @@ public final class Constants {
     public static final long MAX_LOG_TIME_WAIT = 10;
     public static final boolean ENABLE_LOGGING = true;
 
-    public static final boolean EXAMPLE_DEBUG = true;
+    public static final boolean DEBUG = true;
     public static final int EXAMPLE_MOTOR_ID = 1;
-    public static final double EXAMPLE_ROLLER_SPEED = 0.25;
-    public static final double EXAMPLE_SPIN_TIMEOUT = 5;
+    public static final int TILT_MOTOR_ID = 2;
+
+    public static final double ROLLER_SPEED = 0.25;
+    public static final double TILT_SPEED = -0.5; // Arm motor is inverted - use negative speed
+    public static final double SPIN_TIMEOUT = 5;
+    public static final double TILT_TIMEOUT = 5;
+    public static final double TILT_LENGTH = 0.2;
+    public static final Rotation2d TILT_MIN_ANGLE = Rotation2d.fromDegrees(45);
+    public static final Rotation2d TILT_MAX_ANGLE = Rotation2d.fromDegrees(90);
+    public static final double TILT_INERTIA = 0.5;
+    public static final double TILT_GEARING = 45.0;
+    public static final boolean TILT_SIMULATE_GRAVITY = false;
 
     public static final boolean ARM_DEBUG = true;
     public static final double DRIVE_BASE_WIDTH = 0.635;

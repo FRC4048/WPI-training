@@ -2,17 +2,17 @@ package frc.robot.commands.example;
 
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.Constants;
-import frc.robot.subsystems.example.ExampleSubsystem;
+import frc.robot.subsystems.example.RollerSubsystem;
 import frc.robot.utils.logging.commands.LoggableCommand;
 
-public class SpinExample extends LoggableCommand {
-  private final ExampleSubsystem byebyeRoller;
+public class SpinRoller extends LoggableCommand {
+  private final RollerSubsystem subsystem;
   private final Timer timer;
 
-  public SpinExample(ExampleSubsystem byebyeRoller) {
+  public SpinRoller(RollerSubsystem subsystem) {
     timer = new Timer();
-    this.byebyeRoller = byebyeRoller;
-    addRequirements(byebyeRoller);
+    this.subsystem = subsystem;
+    addRequirements(subsystem);
   }
 
   @Override
@@ -22,17 +22,17 @@ public class SpinExample extends LoggableCommand {
 
   @Override
   public void execute() {
-    byebyeRoller.setSpeed(Constants.EXAMPLE_ROLLER_SPEED);
+    subsystem.setSpeed(Constants.ROLLER_SPEED);
   }
 
   @Override
   public void end(boolean interrupted) {
-    byebyeRoller.stopMotors();
+    subsystem.stopMotors();
   }
 
   @Override
   public boolean isFinished() {
-    if (timer.hasElapsed(Constants.EXAMPLE_SPIN_TIMEOUT)) {
+    if (timer.hasElapsed(Constants.SPIN_TIMEOUT)) {
       return true;
     } else{
       return false;

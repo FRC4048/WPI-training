@@ -23,4 +23,14 @@ public class MockSparkMaxIo implements SparkMaxIo {
     @Override
     public void stopMotor() {
     }
+
+    @Override
+    public boolean isFwdSwitchPressed() {
+        return false;
+    }
+
+    @Override
+    public boolean isRevSwitchPressed() {
+        return false;
+    }
 }

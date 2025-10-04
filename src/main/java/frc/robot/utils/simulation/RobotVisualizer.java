@@ -26,10 +26,10 @@ public class RobotVisualizer {
                 riserLigament.append(
                         new LoggedMechanismLigament2d(
                                 "Tilt",
-                                0.25,
-                                90,
+                                0.5,
+                                90.0,
                                 4,
-                                new Color8Bit(Color.kLightBlue)));
+                                new Color8Bit(Color.kCornflowerBlue)));
         this.rollerLigament =
                 this.tiltLigament.append(
                         new LoggedMechanismLigament2d(
@@ -38,6 +38,10 @@ public class RobotVisualizer {
 
     public LoggedMechanismLigament2d getRollerLigament() {
         return rollerLigament;
+    }
+
+    public LoggedMechanismLigament2d getTiltLigament() {
+        return tiltLigament;
     }
 
     public void logMechanism() {

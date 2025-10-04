@@ -13,15 +13,15 @@ import edu.wpi.first.wpilibj.simulation.BatterySim;
 import edu.wpi.first.wpilibj.simulation.RoboRioSim;
 import edu.wpi.first.wpilibj.simulation.SingleJointedArmSim;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.littletonrobotics.junction.mechanism.LoggedMechanismLigament2d;
 import frc.robot.Constants;
+import org.littletonrobotics.junction.mechanism.LoggedMechanismLigament2d;
 
 /**
  * A class to encapsulate the behavior of a simulated single jointed arm. Wraps around the motor and
  * the physical model to simulate the behavior. Send information to ShuffleBoard with physics
  * information. Does not interfere with production behavior.
  */
-public class ArmSimulator {
+public class ArmSimulator implements Simulator {
     // Gearbox represents a gearbox (1:1 conversion rate) with 1 motor connected
     private final DCMotor gearbox = DCMotor.getNEO(1);
     // The motor (that sits underneath the motor simulator)
@@ -71,6 +71,7 @@ public class ArmSimulator {
     /**
      * Advance the simulation.
      */
+    @Override
     public void stepSimulation() {
         // In this method, we update our simulation of what our elevator is doing
         // First, we set our "inputs" (voltages)

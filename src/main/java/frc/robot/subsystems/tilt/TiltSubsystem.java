@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.subsystems.example;
+package frc.robot.subsystems.tilt;
 
 import com.revrobotics.spark.SparkBase;
 import com.revrobotics.spark.SparkLowLevel;
@@ -16,13 +16,15 @@ import frc.robot.utils.logging.io.motor.MockSparkMaxIo;
 import frc.robot.utils.logging.io.motor.RealSparkMaxIo;
 import frc.robot.utils.logging.io.motor.SimSparkMaxIo;
 import frc.robot.utils.logging.io.motor.SparkMaxIo;
+import frc.robot.utils.simulation.ArmParameters;
+import frc.robot.utils.simulation.ArmSimulator;
 import frc.robot.utils.simulation.RobotVisualizer;
 
-public class ExampleSubsystem extends SubsystemBase {
-    public static final String LOGGING_NAME = "ExampleSubsystem";
+public class TiltSubsystem extends SubsystemBase {
+    public static final String LOGGING_NAME = "TiltSubsystem";
     private final SparkMaxIo io;
 
-    public ExampleSubsystem(SparkMaxIo io) {
+    public TiltSubsystem(SparkMaxIo io) {
         this.io = io;
     }
 
@@ -32,6 +34,16 @@ public class ExampleSubsystem extends SubsystemBase {
 
     public void stopMotors() {
         io.stopMotor();
+    }
+
+    public boolean isAtTop() {
+        // Arm motor is inverted - rev switch is at top
+        return io.isRevSwitchPressed();
+    }
+
+    public boolean isAtBottom() {
+        // Arm motor is inverted - fwd switch is at bottom
+        return io.isFwdSwitchPressed();
     }
 
     @Override
@@ -48,12 +60,13 @@ public class ExampleSubsystem extends SubsystemBase {
     }
 
     public static SparkMaxIo createSimIo(RobotVisualizer visualizer) {
-        return new SimSparkMaxIo(LOGGING_NAME, createMotor(), MotorLoggableInputs.allMetrics(),
-                visualizer.getRollerLigament());
+        SparkMax motor = createMotor();
+        ArmSimulator simulator = new ArmSimulator(motor, createParams(), visualizer.getTiltLigament());
+        return new SimSparkMaxIo(LOGGING_NAME, motor, MotorLoggableInputs.allMetrics(), simulator);
     }
 
     private static SparkMax createMotor() {
-        SparkMax motor = new SparkMax(Constants.EXAMPLE_MOTOR_ID, SparkLowLevel.MotorType.kBrushless);
+        SparkMax motor = new SparkMax(Constants.TILT_MOTOR_ID, SparkLowLevel.MotorType.kBrushless);
         SparkMaxConfig motorConfig = new SparkMaxConfig();
         motorConfig.idleMode(SparkBaseConfig.IdleMode.kBrake);
         motorConfig.smartCurrentLimit(Constants.NEO_CURRENT_LIMIT);
@@ -63,5 +76,17 @@ public class ExampleSubsystem extends SubsystemBase {
                 SparkBase.PersistMode.kPersistParameters);
 
         return motor;
+    }
+
+    private static ArmParameters createParams() {
+        ArmParameters params = new ArmParameters();
+        params.name = "Tilt";
+        params.armGearing = Constants.TILT_GEARING;
+        params.armInertia = Constants.TILT_INERTIA;
+        params.armLength = Constants.TILT_LENGTH;
+        params.armMinAngle = Constants.TILT_MIN_ANGLE;
+        params.armMaxAngle = Constants.TILT_MAX_ANGLE;
+        params.armSimulateGravity = Constants.TILT_SIMULATE_GRAVITY;
+        return params;
     }
 }

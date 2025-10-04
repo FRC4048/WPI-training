@@ -3,20 +3,19 @@ package frc.robot.utils.logging.io.motor;
 import com.revrobotics.spark.SparkMax;
 import frc.robot.Constants;
 import frc.robot.utils.logging.input.MotorLoggableInputs;
-import frc.robot.utils.simulation.MotorSimulator;
+import frc.robot.utils.simulation.Simulator;
 import org.littletonrobotics.junction.mechanism.LoggedMechanismLigament2d;
 
 /**
  * IO Implementation for a simulated SparkMax IO controller.
  */
 public class SimSparkMaxIo extends RealSparkMaxIo {
-    private final MotorSimulator motorSimulator;
+    private final Simulator motorSimulator;
 
     public SimSparkMaxIo(String name, SparkMax motor, MotorLoggableInputs inputs,
-                         LoggedMechanismLigament2d ligament) {
+                         Simulator simulator) {
         super(name, motor, inputs);
-        // TODO: Simulator needs to be passed in
-        motorSimulator = new MotorSimulator(motor, ligament);
+        this.motorSimulator = simulator;
     }
 
     @Override

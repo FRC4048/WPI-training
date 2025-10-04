@@ -8,8 +8,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.commands.example.SpinExample;
-import frc.robot.subsystems.example.ExampleSubsystem;
+import frc.robot.commands.example.SpinRoller;
+import frc.robot.commands.tilt.TiltDown;
+import frc.robot.commands.tilt.TiltUp;
+import frc.robot.subsystems.example.RollerSubsystem;
+import frc.robot.subsystems.tilt.TiltSubsystem;
 import frc.robot.utils.simulation.RobotVisualizer;
 
 /**
@@ -20,7 +23,8 @@ import frc.robot.utils.simulation.RobotVisualizer;
  */
 public class RobotContainer {
     // The robot's subsystems and commands are defined here...
-    private final ExampleSubsystem byebyeRoller;
+    private final RollerSubsystem rollerSubsystem;
+    private final TiltSubsystem tiltSubsystem;
 
     private RobotVisualizer robotVisualizer;
 
@@ -30,14 +34,17 @@ public class RobotContainer {
     public RobotContainer() {
         switch (Constants.currentMode) {
             case REAL -> {
-                byebyeRoller = new ExampleSubsystem(ExampleSubsystem.createRealIo());
+                rollerSubsystem = new RollerSubsystem(RollerSubsystem.createRealIo());
+                tiltSubsystem = new TiltSubsystem(TiltSubsystem.createRealIo());
             }
             case REPLAY -> {
-                byebyeRoller = new ExampleSubsystem(ExampleSubsystem.createMockIo());
+                rollerSubsystem = new RollerSubsystem(RollerSubsystem.createMockIo());
+                tiltSubsystem = new TiltSubsystem(TiltSubsystem.createMockIo());
             }
             case SIM -> {
                 robotVisualizer = new RobotVisualizer();
-                byebyeRoller = new ExampleSubsystem(ExampleSubsystem.createSimIo(robotVisualizer));
+                rollerSubsystem = new RollerSubsystem(RollerSubsystem.createSimIo(robotVisualizer));
+                tiltSubsystem = new TiltSubsystem(TiltSubsystem.createSimIo(robotVisualizer));
             }
             default -> {
                 throw new RuntimeException("Did not specify Robot Mode");
@@ -74,11 +81,18 @@ public class RobotContainer {
     }
 
     public void putShuffleboardCommands() {
-        if (Constants.EXAMPLE_DEBUG) {
-            // ByeBye Commands
+        if (Constants.DEBUG) {
             SmartDashboard.putData(
-                    "Spin ByeBye Roller",
-                    new SpinExample(byebyeRoller));
+                    "Spin Roller",
+                    new SpinRoller(rollerSubsystem));
+
+            SmartDashboard.putData(
+                    "Tilt Up",
+                    new TiltUp(tiltSubsystem));
+
+            SmartDashboard.putData(
+                    "Tilt Down",
+                    new TiltDown(tiltSubsystem));
         }
     }
 
