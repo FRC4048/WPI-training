@@ -45,7 +45,7 @@ public final class Constants {
     public static final boolean ENABLE_LOGGING = true;
 
     public static final boolean DEBUG = true;
-    public static final int EXAMPLE_MOTOR_ID = 1;
+    public static final int ROLLER_MOTOR_ID = 1;
     public static final int TILT_MOTOR_ID = 2;
 
     public static final double ROLLER_SPEED = 0.25;

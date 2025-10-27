@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.subsystems.example;
+package frc.robot.subsystems;
 
 import com.revrobotics.spark.SparkBase;
 import com.revrobotics.spark.SparkLowLevel;
@@ -20,7 +20,7 @@ import frc.robot.utils.simulation.MotorSimulator;
 import frc.robot.utils.simulation.RobotVisualizer;
 
 public class RollerSubsystem extends SubsystemBase {
-    public static final String LOGGING_NAME = "ExampleSubsystem";
+    public static final String LOGGING_NAME = "RollerSubsystem";
     private final SparkMaxIo io;
 
     public RollerSubsystem(SparkMaxIo io) {
@@ -55,7 +55,7 @@ public class RollerSubsystem extends SubsystemBase {
     }
 
     private static SparkMax createMotor() {
-        SparkMax motor = new SparkMax(Constants.EXAMPLE_MOTOR_ID, SparkLowLevel.MotorType.kBrushless);
+        SparkMax motor = new SparkMax(Constants.ROLLER_MOTOR_ID, SparkLowLevel.MotorType.kBrushless);
         SparkMaxConfig motorConfig = new SparkMaxConfig();
         motorConfig.idleMode(SparkBaseConfig.IdleMode.kBrake);
         motorConfig.smartCurrentLimit(Constants.NEO_CURRENT_LIMIT);

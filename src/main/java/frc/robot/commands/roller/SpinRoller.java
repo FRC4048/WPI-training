@@ -1,8 +1,8 @@
-package frc.robot.commands.example;
+package frc.robot.commands.roller;
 
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.Constants;
-import frc.robot.subsystems.example.RollerSubsystem;
+import frc.robot.subsystems.RollerSubsystem;
 import frc.robot.utils.logging.commands.LoggableCommand;
 
 public class SpinRoller extends LoggableCommand {

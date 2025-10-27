@@ -2,7 +2,7 @@ package frc.robot.commands.tilt;
 
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.Constants;
-import frc.robot.subsystems.tilt.TiltSubsystem;
+import frc.robot.subsystems.TiltSubsystem;
 import frc.robot.utils.logging.commands.LoggableCommand;
 
 public class TiltUp extends LoggableCommand {

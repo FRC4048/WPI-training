@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.commands.example.SpinRoller;
+import frc.robot.commands.roller.SpinRoller;
 import frc.robot.commands.tilt.TiltDown;
 import frc.robot.commands.tilt.TiltUp;
-import frc.robot.subsystems.example.RollerSubsystem;
-import frc.robot.subsystems.tilt.TiltSubsystem;
+import frc.robot.subsystems.RollerSubsystem;
+import frc.robot.subsystems.TiltSubsystem;
 import frc.robot.utils.simulation.RobotVisualizer;
 
 /**
