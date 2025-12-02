@@ -5,6 +5,8 @@ import frc.robot.Constants;
 import frc.robot.subsystems.TiltSubsystem;
 import frc.robot.utils.logging.commands.LoggableCommand;
 // The command makes thing tilt down
+
+// This command tilts the thing down
 public class TiltDown extends LoggableCommand {
     private final TiltSubsystem subsystem;
     private final Timer timer;
