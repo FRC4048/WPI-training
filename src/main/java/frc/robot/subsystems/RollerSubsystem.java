@@ -23,23 +23,23 @@ import frc.robot.utils.simulation.RobotVisualizer;
 
 public class RollerSubsystem extends SubsystemBase {
     public static final String LOGGING_NAME = "RollerSubsystem";
-    private final SparkMaxIo io;
+    private final SparkMaxIo motor;
 
-    public RollerSubsystem(SparkMaxIo io) {
-        this.io = io;
+    public RollerSubsystem(SparkMaxIo motor) {
+        this.motor = motor;
     }
 
     public void setSpeed(double speed) {
-        io.set(speed);
+        motor.set(speed);
     }
 
     public void stopMotors() {
-        io.stopMotor();
+        motor.stopMotor();
     }
 
     @Override
     public void periodic() {
-        io.periodic();
+        motor.periodic();
     }
 
     public static SparkMaxIo createMockIo() {
@@ -65,7 +65,8 @@ public class RollerSubsystem extends SubsystemBase {
                 motorConfig,
                 SparkBase.ResetMode.kResetSafeParameters,
                 SparkBase.PersistMode.kPersistParameters);
+//changed constructor name
 
-        return motor;
+                return motor;
     }
 }
