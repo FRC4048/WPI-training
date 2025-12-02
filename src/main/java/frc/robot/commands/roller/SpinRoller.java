@@ -15,6 +15,8 @@ public class SpinRoller extends LoggableCommand {
     addRequirements(subsystem);
   }
 
+  // this is a cool comment
+  // this is the initialize method
   @Override
   public void initialize() {
     timer.restart();
