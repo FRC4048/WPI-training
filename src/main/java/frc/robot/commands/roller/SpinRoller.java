@@ -20,6 +20,9 @@ public class SpinRoller extends LoggableCommand {
     timer.restart();
   }
 
+
+  // this is a comment
+  // this command sets the speed of the Roller
   @Override
   public void execute() {
     subsystem.setSpeed(Constants.ROLLER_SPEED);
