@@ -5,6 +5,7 @@ import frc.robot.Constants;
 import frc.robot.subsystems.RollerSubsystem;
 import frc.robot.utils.logging.commands.LoggableCommand;
 
+// Spins roller on Algae Bye Bye
 public class SpinRoller extends LoggableCommand {
   private final RollerSubsystem subsystem;
   private final Timer timer;

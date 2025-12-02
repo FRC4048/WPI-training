@@ -5,6 +5,7 @@ import frc.robot.Constants;
 import frc.robot.subsystems.TiltSubsystem;
 import frc.robot.utils.logging.commands.LoggableCommand;
 
+// Tilts Algae Bye Bye arm up
 public class TiltUp extends LoggableCommand {
     private final TiltSubsystem subsystem;
     private final Timer timer;
