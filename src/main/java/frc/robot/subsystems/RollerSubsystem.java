@@ -63,6 +63,7 @@ public class RollerSubsystem extends SubsystemBase {
                 motorConfig,
                 SparkBase.ResetMode.kResetSafeParameters,
                 SparkBase.PersistMode.kPersistParameters);
+//This code sucks
 
         return motor;
     }
