@@ -1,16 +1,16 @@
-package frc.robot.commands.roller;
+package frc.robot.commands.intake;
 
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.Constants;
-import frc.robot.subsystems.RollerSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.utils.logging.commands.LoggableCommand;
 
-// Spins roller on Algae Bye Bye
-public class SpinRoller extends LoggableCommand {
-  private final RollerSubsystem subsystem;
+// Spins Intake
+public class SpinIntake extends LoggableCommand {
+  private final IntakeSubsystem subsystem;
   private final Timer timer;
 
-  public SpinRoller(RollerSubsystem subsystem) {
+  public SpinIntake(IntakeSubsystem subsystem) {
     timer = new Timer();
     this.subsystem = subsystem;
     addRequirements(subsystem);
@@ -23,7 +23,7 @@ public class SpinRoller extends LoggableCommand {
 
   @Override
   public void execute() {
-    subsystem.setSpeed(Constants.ROLLER_SPEED);
+    subsystem.setSpeed(Constants.INTAKE_SPEED);
   }
 
   @Override
@@ -33,7 +33,7 @@ public class SpinRoller extends LoggableCommand {
 
   @Override
   public boolean isFinished() {
-    if (timer.hasElapsed(Constants.SPIN_TIMEOUT)) {
+    if (timer.hasElapsed(Constants.INTAKE_TIMEOUT)) {
       return true;
     }
     else {
