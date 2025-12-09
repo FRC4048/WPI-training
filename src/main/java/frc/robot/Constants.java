@@ -39,6 +39,7 @@ public final class Constants {
     public static final Mode currentMode = RobotBase.isReal() ? Mode.REAL : simMode;
 
     public static final int NEO_CURRENT_LIMIT = 20;
+    public static final int NEO_CURRENT_LIMIT_2 = 40;
 
     // Logging
     public static final long MAX_LOG_TIME_WAIT = 10;
@@ -46,6 +47,7 @@ public final class Constants {
 
     public static final boolean DEBUG = true;
     public static final int ROLLER_MOTOR_ID = 1;
+    public static final int INTAKE_MOTOR_ID = 3;
     public static final int TILT_MOTOR_ID = 2;
 
     public static final double ROLLER_SPEED = 0.25;
