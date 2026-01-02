@@ -64,4 +64,9 @@ public final class Constants {
     public static final double DRIVE_BASE_LENGTH = 0.635;
     public static final double INITIAL_ROBOT_HEIGHT = 0;
 
+    public static final int INTAKE_MOTOR_ID = 23;
+    public static final double INTAKE_SPEED = 0.3;
+    public static final double FLUSH_SPEED = -0.1;
+    public static final double INTAKE_TIMEOUT = 5;
+    public static final double FLUSH_TIMEOUT = 2;
 }
