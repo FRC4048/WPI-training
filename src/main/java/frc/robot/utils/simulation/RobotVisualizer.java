@@ -14,6 +14,7 @@ public class RobotVisualizer {
     private final LoggedMechanismLigament2d tiltLigament;
     private final LoggedMechanismLigament2d rollerLigament;
     private final LoggedMechanismLigament2d intakeLigament;
+    private final LoggedMechanismLigament2d intakeLigament2;
 
     public RobotVisualizer() {
         LoggedMechanismRoot2d root =
@@ -44,10 +45,18 @@ public class RobotVisualizer {
                 intakeRiserLigament.append(
                         new LoggedMechanismLigament2d(
                                 "Intake", 0.05, 180, 5, new Color8Bit(Color.kOrange)));
+        this.intakeLigament2 =
+                intakeRiserLigament.append(
+                        new LoggedMechanismLigament2d(
+                                "Intake2", 0.05, 180, 5, new Color8Bit(Color.kPurple)));
     }
 
     public LoggedMechanismLigament2d getIntakeLigament() {
         return intakeLigament;
+    }
+
+    public LoggedMechanismLigament2d getIntakeLigament2() {
+        return intakeLigament2;
     }
 
     public LoggedMechanismLigament2d getRollerLigament() {
